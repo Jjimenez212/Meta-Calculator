@@ -3,7 +3,6 @@ import {
   useRef
 } from "react"; 
 import "./App.css";
-//random comment
 
 function App() { 
   const inputRef = useRef(null); 
@@ -11,40 +10,44 @@ function App() {
   const [result, setResult] = useState(0);
   const [input, setInput] = useState(null);
  
-  function plus(e) { 
+  const plus = (e) => { 
     e.preventDefault(); 
-    setResult((result) => result + Number(inputRef.current.value));
+    setResult((result) => result + Number
+    (inputRef.current.value));
   }; 
  
-  function minus(e) { 
+  const minus = (e) => { 
   	e.preventDefault();
-    setResult((result)=> result - Number(inputRef.current.value)); 
+    setResult((result)=> result - Number
+    (inputRef.current.value)); 
   };
  
-  function times(e) { 
+  const times = (e) => { 
     e.preventDefault();
-    setResult((result)=> result * Number(inputRef.current.value));
+    setResult((result)=> result * Number
+    (inputRef.current.value));
   }; 
  
-  function divide(e) { 
+  const divide = (e) => { 
     e.preventDefault();
-    setResult((result)=> result / Number(inputRef.current.value));  
+    setResult((result)=> result / Number
+    (inputRef.current.value));  
   };
  
-  function resetInput(e) { 
+  const resetInput = (e) => { 
     e.preventDefault();
-    handleChange(null);
+    inputRef.current.value = 0;
   }; 
  
-  function resetResult(e) { 
+  const resetResult = (e) => { 
   	e.preventDefault();
-    setResult(0);
+    setResult((prevVal) => prevVal * 0);
   }; 
 
-  function handleChange(e){
+   const handleChange = (e) => {
     const handler = (e) ? e.target.value : null;
     setInput(handler);
-  }
+  } 
  
   return ( 
     <div className="App"> 
@@ -52,9 +55,7 @@ function App() {
         <h1>Simplest Working Calculator</h1> 
       </div> 
       <form> 
-        <p ref={resultRef}> 
-          {result} 
-        </p> 
+        <p ref={resultRef}>{result}</p> 
         <input
           pattern="[0-9]" 
           ref={inputRef}
